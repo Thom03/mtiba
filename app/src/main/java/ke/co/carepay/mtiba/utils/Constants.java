@@ -14,6 +14,6 @@ public class Constants {
     public static final String MTIBA_CREATE_PASSWORD_URL = "changepassword";
     public static final String API_USERNAME_KEY = "username";
     public static final String API_PASSWORD_KEY = "password";
-    public static final String API_NEW_PASSWORD_KEY = "newpassword";
+    public static final String API_NEW_PASSWORD_KEY = "newPassword";
 
 }
