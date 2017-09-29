@@ -32,6 +32,7 @@ public class CreatePasswordActivity extends AppCompatActivity implements View.On
         confirmNewPassword = (EditText) findViewById(R.id.confirmNewPassword);
         createPasswordButton = (Button) findViewById(R.id.createPasswordButton);
         phoneNumber = getIntent().getStringExtra("phoneNumber");
+        userPhoneNumber.setText(phoneNumber);
         createPasswordButton.setOnClickListener(this);
     }
 
@@ -44,11 +45,11 @@ public class CreatePasswordActivity extends AppCompatActivity implements View.On
             String password = newPassword.getText().toString().trim();
             String passwordConfirmation = confirmNewPassword.getText().toString().trim();
             boolean isvalidPassword = isPasswordValid(password, passwordConfirmation);
-//            if(!isvalidPassword){
-//                newPassword.setError("Password should be 6 characters or more");
-//            }else if(!password.equals(passwordConfirmation)){
-//                confirmNewPassword.setError("Passwords do not match");
-//            }else{
+            if(!isvalidPassword){
+                newPassword.setError("Password should be 6 characters or more");
+            }else if(!password.equals(passwordConfirmation)){
+                confirmNewPassword.setError("Passwords do not match");
+            }else{
                 mtibaRequests.createNewPassword(phoneNumber, password, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -60,7 +61,7 @@ public class CreatePasswordActivity extends AppCompatActivity implements View.On
                         Log.d("createpassword", Integer.toString(response.code()));
                     }
                 });
-//            }
+            }
         }
     }
     public boolean isPasswordValid(String password, String confirmPassword){

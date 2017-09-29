@@ -9,9 +9,14 @@ import ke.co.carepay.mtiba.BuildConfig;
 public class Constants {
     public static final String JWT_TOKEN = BuildConfig.JWT_TOKEN;
     public static final String USER_TOKEN = "user_token";
+
+//    urls for api endpoints
     public static final String MTIBA_BASE_URL = "http://usermanagement-test.ap-southeast-1.elasticbeanstalk.com/";
     public static final String MTIBA_CHECK_USER_URL = "users/phonenumbers/";
     public static final String MTIBA_CREATE_PASSWORD_URL = "changepassword";
+    public static final String MTIBA_LOGIN_URL = "login";
+
+//    json object details
     public static final String API_USERNAME_KEY = "username";
     public static final String API_PASSWORD_KEY = "password";
     public static final String API_NEW_PASSWORD_KEY = "newPassword";

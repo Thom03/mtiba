@@ -58,6 +58,8 @@ public class PhoneInputActivity extends AppCompatActivity implements View.OnClic
                                 finish();
                             }else{
                                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                String phoneNumber = phoneNumberInput.getText().toString().trim();
+                                intent.putExtra("phoneNumber",phoneNumber);
                                 startActivity(intent);
                                 finish();
                             }
