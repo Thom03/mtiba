@@ -21,7 +21,11 @@
         <activity android:name=".ui.HomeActivity" />
         <activity android:name=".ui.PhoneInputActivity" />
         <activity android:name=".ui.LoginActivity" />
-        <activity android:name=".ui.CreatePasswordActivity"></activity>
+        <activity android:name=".ui.CreatePasswordActivity" />
+        <activity
+            android:name=".Mtiba"
+            android:label="@string/title_activity_mtiba"
+            android:theme="@style/NoStatusBar"></activity>
     </application>
 
 </manifest>
