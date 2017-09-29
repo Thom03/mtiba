@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Mtiba</string>
     <string name="sign1">This is the PhoneNo that you used to create your patient account </string>
+    <string name="title_activity_mtiba">Mtiba</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
