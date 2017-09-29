@@ -1,13 +1,15 @@
-package ke.co.carepay.mtiba;
+package ke.co.carepay.mtiba.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SplashActivity extends AppCompatActivity {
+import ke.co.carepay.mtiba.R;
+
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_login);
     }
 }
