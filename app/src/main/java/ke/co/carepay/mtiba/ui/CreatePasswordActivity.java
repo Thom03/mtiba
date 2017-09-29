@@ -57,7 +57,7 @@ public class CreatePasswordActivity extends AppCompatActivity implements View.On
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Log.d("createpassword", response.body().string());
+                        Log.d("createpassword", Integer.toString(response.code()));
                     }
                 });
 //            }
