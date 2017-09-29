@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mtiba</string>
+    <string name="sign1">This is the PhoneNo that you used to create your patient account </string>
 </resources>
