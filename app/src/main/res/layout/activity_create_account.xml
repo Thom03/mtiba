@@ -69,25 +69,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sex"/>
-
-    <EditText
-        android:id="@+id/newPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="new password"
-        android:inputType="textPassword"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nationalIdNumber"/>
-    <EditText
-        android:id="@+id/confirmNewPassword"
-        android:hint="confirm password"
-        android:inputType="textPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/newPassword"/>
     <Button
         android:id="@+id/createAccountButton"
         android:text="create account"
@@ -95,6 +76,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/confirmNewPassword"
+        app:layout_constraintTop_toBottomOf="@id/nationalIdNumber"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </android.support.constraint.ConstraintLayout>
