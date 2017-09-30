@@ -32,6 +32,7 @@ public class Mtiba extends AppCompatActivity implements NavigationView.OnNavigat
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
+
         String user_token = mSharedPreferences.getString(Constants.USER_TOKEN,null);
         if(user_token==null){
             Intent intent = new Intent(Mtiba.this, PhoneInputActivity.class);
