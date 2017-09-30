@@ -27,7 +27,7 @@ public class CreatePasswordActivity extends AppCompatActivity implements View.On
     private TextView userPhoneNumber;
     private EditText newPassword;
     private EditText confirmNewPassword;
-    private Button createAccountButton;
+    private Button createPasswordButton;
     private String phoneNumber;
 
 
@@ -40,18 +40,19 @@ public class CreatePasswordActivity extends AppCompatActivity implements View.On
         userPhoneNumber = (TextView) findViewById(R.id.userPhoneNumber);
         newPassword = (EditText) findViewById(R.id.newPassword);
         confirmNewPassword = (EditText) findViewById(R.id.confirmNewPassword);
+        createPasswordButton = (Button) findViewById(R.id.createPasswordButton);
 
 
 
         phoneNumber = getIntent().getStringExtra("phoneNumber");
         userPhoneNumber.setText(phoneNumber);
-        createAccountButton.setOnClickListener(this);
+        createPasswordButton.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
-        if(view == createAccountButton){
+        if(view == createPasswordButton){
             Log.d("button", "you have pressed me");
             final MtibaRequests mtibaRequests = new MtibaRequests();
             String username = userPhoneNumber.getText().toString().trim();

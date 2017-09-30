@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Parcel
 public class AccountHolder {
-    private String c;
+//    private String @c;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -31,7 +31,7 @@ public class AccountHolder {
         this.identification = identification;
         this.userRef = userRef;
         this.phoneNumber = phoneNumber;
-        this.c = ".AccountHolder";
+//        this.c = ".AccountHolder";
     }
     public String getFirstName(){
         return firstName;
@@ -56,6 +56,9 @@ public class AccountHolder {
     }
     public String getPhoneNumber(){
         return phoneNumber;
+    }
+    public void setAc(String key){
+
     }
 
 }

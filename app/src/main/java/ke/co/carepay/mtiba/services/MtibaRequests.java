@@ -43,14 +43,23 @@ public class MtibaRequests {
     }
     public void createNewAccount(AccountHolder accountHolder, Callback callback){
 
+        JSONObject jsonObject = new JSONObject();
         Gson gson = new Gson();
         String json = gson.toJson(accountHolder);
+        try{
+            jsonObject = new JSONObject(gson.toJson(json));
+            jsonObject.put("@c", ".AccountHolder");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+
 
 //        JSONObject json2 = new JSONObject(jsonidentification);
         String url = "http://program-service-test.ap-southeast-1.elasticbeanstalk.com/accountholders";
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         OkHttpClient client = new OkHttpClient();
-        RequestBody body = RequestBody.create(JSON, json.toString());
+        RequestBody body = RequestBody.create(JSON, jsonObject.toString());
         Request request = new Request.Builder()
                 .header("Authorization", Constants.JWT_TOKEN)
                 .header("Accept","*/*")
