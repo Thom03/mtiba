@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -76,23 +77,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 mEditor.putString(Constants.USER_TOKEN, token);
                                 mEditor.commit();
 
-                                String userType = jsonObject.getString("@c");
+
                                 String phoneNumber = jsonObject.getString("name");
                                 String id = jsonObject.getString("id");
-                                Log.d("status", userType);
-                                if(userType.equals(".AccountHolder")){
-
+                                if(response.code()==200){
                                     Intent intent = new Intent(LoginActivity.this, Mtiba.class);
                                     startActivity(intent);
                                     finish();
                                 }else{
-                                    Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
-                                    intent.putExtra("phoneNumber", phoneNumber);
-                                    intent.putExtra("id", id);
-                                    startActivity(intent);
-                                    finish();
+                                    Toast.makeText(getApplicationContext(), "Wrong credentials. Access denied",Toast.LENGTH_SHORT);
                                 }
-
                             }
                         }catch (JSONException e){
                             e.printStackTrace();
