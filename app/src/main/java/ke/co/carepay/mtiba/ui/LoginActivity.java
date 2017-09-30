@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private SharedPreferences.Editor mEditor;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if(view == loginButton){
             MtibaRequests mtibaRequests = new MtibaRequests();
+<<<<<<< HEAD
+=======
+            final String username = loginUserName.getText().toString().trim();
+>>>>>>> 96a4f7f04766ed2a1500b54f7f0c7a5319e697bd
             String password = loginPassword.getText().toString().trim();
             if(password==null){
                 loginPassword.setError("Password cannot be empty");
@@ -74,9 +80,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 mEditor.putString(Constants.USER_TOKEN, token);
                                 mEditor.commit();
 
-                                Intent intent = new Intent(LoginActivity.this, Mtiba.class);
-                                startActivity(intent);
-                                finish();
+                                String userType = jsonObject.getString("@c");
+                                String phoneNumber = jsonObject.getString("name");
+                                String id = jsonObject.getString("id");
+                                Log.d("status", userType);
+                                if(userType.equals(".AccountHolder")){
+
+                                    Intent intent = new Intent(LoginActivity.this, Mtiba.class);
+                                    startActivity(intent);
+                                    finish();
+                                }else{
+                                    Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
+                                    intent.putExtra("phoneNumber", phoneNumber);
+                                    intent.putExtra("id", id);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
                             }
                         }catch (JSONException e){
                             e.printStackTrace();

@@ -2,12 +2,16 @@ package ke.co.carepay.mtiba.services;
 
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.List;
 
+import ke.co.carepay.mtiba.models.AccountHolder;
 import ke.co.carepay.mtiba.utils.Constants;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -24,6 +28,7 @@ public class MtibaRequests {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
+    JSONObject jsonFinal = new JSONObject();
 
     //check if a user
     public void checkUserExists(String phoneNumber, Callback callback){
@@ -36,29 +41,12 @@ public class MtibaRequests {
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
-    public void createNewAccount(String FirstName, String SecondName, String LastName,String NationalIdNumber,Long DateOfBirth, String gender, int userRef, String phoneNumber, Callback callback){
-        JSONObject json = new JSONObject();
-        JSONObject jsonNationalId = new JSONObject();
-        try{
-            jsonNationalId.put("identificationType", "NATIONAL_ID");
-            jsonNationalId.put("idNumber", NationalIdNumber);
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
+    public void createNewAccount(AccountHolder accountHolder, Callback callback){
 
-        try{
-            json.put("@c",".AccountHolder");
-            json.put("firstName", FirstName);
-            json.put("middleName", SecondName);
-            json.put("lastName", LastName);
-            json.put("dateOfBirth", DateOfBirth);
-            json.put("gender", gender);
-            json.put("identification", jsonNationalId);
-            json.put("userRef", userRef);
-            json.put("phoneNumber",phoneNumber);
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
+        Gson gson = new Gson();
+        String json = gson.toJson(accountHolder);
+
+//        JSONObject json2 = new JSONObject(jsonidentification);
         String url = "http://program-service-test.ap-southeast-1.elasticbeanstalk.com/accountholders";
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         OkHttpClient client = new OkHttpClient();

@@ -25,7 +25,8 @@
             android:name=".ui.Mtiba"
             android:label="@string/title_activity_mtiba"
             android:theme="@style/NoStatusBar" />
-        <activity android:name=".ui.UpdateAccountDetailsActivity"></activity>
+        <activity android:name=".ui.UpdateAccountDetailsActivity" />
+        <activity android:name=".ui.CreateAccountActivity"></activity>
     </application>
 
 </manifest>
