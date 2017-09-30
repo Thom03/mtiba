@@ -3,33 +3,51 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_user"
+            android:title="User Profile" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_email_statements"
+            android:icon="@drawable/ic_statements"
+
+            android:title="Get Statements" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_moneyadd"
+            android:icon="@drawable/ic_topup"
+            android:title="Top Up" />
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Get Treatment">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_loc_clinic"
+                android:icon="@drawable/ic_clinic"
+                android:title="Locate A Clinic" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_dependants"
+                android:icon="@drawable/ic_dependants"
+                android:title="My Dependants" />
+            <item
+                android:id="@+id/nav_benefits"
+                android:icon="@drawable/ic_benefits"
+                android:title="My Benefits" />
+        </menu>
+    </item>
+    <item android:title="Personal Activity">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings"
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_love"
+                android:icon="@drawable/ic_love"
+                android:title="Share The Love" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_out"
+                android:title="Logout User" />
         </menu>
     </item>
 
