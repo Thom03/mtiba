@@ -54,10 +54,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if(view == loginButton){
             MtibaRequests mtibaRequests = new MtibaRequests();
-<<<<<<< HEAD
-=======
+
             final String username = loginUserName.getText().toString().trim();
->>>>>>> 96a4f7f04766ed2a1500b54f7f0c7a5319e697bd
+
             String password = loginPassword.getText().toString().trim();
             if(password==null){
                 loginPassword.setError("Password cannot be empty");
