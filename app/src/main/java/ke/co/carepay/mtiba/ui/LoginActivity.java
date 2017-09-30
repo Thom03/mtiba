@@ -1,10 +1,10 @@
 package ke.co.carepay.mtiba.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,6 +53,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             MtibaRequests mtibaRequests = new MtibaRequests();
             String username = loginUserName.getText().toString().trim();
             String password = loginPassword.getText().toString().trim();
+            if(password==null){
+                loginPassword.setError("Password cannot be empty");
+            }
 
             mtibaRequests.login(username, password, new Callback() {
                 @Override
@@ -62,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    if (response.code()==200){
+                    if (response.isSuccessful()){
                         try {
                             String jsonData = response.body().string();
                             if (response.isSuccessful()) {
@@ -70,9 +73,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 String token = jsonObject.getString("token");
                                 mEditor.putString(Constants.USER_TOKEN, token);
                                 mEditor.commit();
-                                Log.d("token", token);
-                                String user_token = mSharedPreferences.getString(Constants.USER_TOKEN,null);
-                                Log.d("token", user_token);
+
+                                Intent intent = new Intent(LoginActivity.this, Mtiba.class);
+                                startActivity(intent);
+                                finish();
                             }
                         }catch (JSONException e){
                             e.printStackTrace();
