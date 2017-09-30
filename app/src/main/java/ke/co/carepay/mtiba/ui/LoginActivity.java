@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +55,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if(view == loginButton){
             MtibaRequests mtibaRequests = new MtibaRequests();
-            final String username = loginUserName.getText().toString().trim();
             String password = loginPassword.getText().toString().trim();
             if(password==null){
                 loginPassword.setError("Password cannot be empty");

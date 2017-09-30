@@ -5,6 +5,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="create">By continuing,you Accept all the <a class="btn btn-primary" href="#">Terms And Service </a> of Mtiba Kenya"</string>
+    <string name="passcom">This is used to login in your account. If you cant remember <a class="btn btn-primary" href="#">Tap to Proceed</a>"</string>
 
     <string name="action_settings">Settings</string>
 </resources>
