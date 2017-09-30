@@ -10,22 +10,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.SplashActivity">
+        android:theme="@style/NoStatusBar">
+        <activity android:name=".ui.PhoneInputActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.HomeActivity" />
-        <activity android:name=".ui.PhoneInputActivity" />
+        <activity android:name=".ui.SplashActivity" />
         <activity android:name=".ui.LoginActivity" />
-        <activity android:name=".ui.CreatePasswordActivity" />
+        <activity android:name=".ui.CreateAccountActivity" />
         <activity
-            android:name=".Mtiba"
+            android:name=".ui.Mtiba"
             android:label="@string/title_activity_mtiba"
-            android:theme="@style/NoStatusBar"></activity>
+            android:theme="@style/NoStatusBar" />
+        <activity android:name=".ui.UpdateAccountDetailsActivity"></activity>
     </application>
 
 </manifest>

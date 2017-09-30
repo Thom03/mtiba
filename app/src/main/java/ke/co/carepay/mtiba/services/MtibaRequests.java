@@ -1,5 +1,7 @@
 package ke.co.carepay.mtiba.services;
 
+import android.content.SharedPreferences;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,6 +19,10 @@ import okhttp3.RequestBody;
 
 public class MtibaRequests {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+
+    //check if a user
     public void checkUserExists(String phoneNumber, Callback callback){
         OkHttpClient client = new OkHttpClient();
         String url = Constants.MTIBA_BASE_URL+Constants.MTIBA_CHECK_USER_URL+phoneNumber;
@@ -27,6 +33,7 @@ public class MtibaRequests {
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
+    //create a new password
     public void createNewPassword(String phoneNumber, String password, Callback callback){
         JSONObject json = new JSONObject();
         try{
@@ -51,6 +58,7 @@ public class MtibaRequests {
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
+    //login user
     public void login(String username, String password, Callback callback){
         JSONObject json = new JSONObject();
         try{
@@ -70,5 +78,9 @@ public class MtibaRequests {
                 .build();
         Call call = client.newCall(request);
         call.enqueue(callback);
+    }
+    //logout
+    public static void logout(){
+
     }
 }

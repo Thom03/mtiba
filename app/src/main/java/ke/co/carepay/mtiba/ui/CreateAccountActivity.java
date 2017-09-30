@@ -16,34 +16,49 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class CreatePasswordActivity extends AppCompatActivity implements View.OnClickListener{
+public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView userPhoneNumber;
     private EditText newPassword;
     private EditText confirmNewPassword;
-    private Button createPasswordButton;
+    private Button createAccountButton;
     private String phoneNumber;
+//    private EditText;
+//    private EditText;
+//    private EditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_password);
+        setContentView(R.layout.activity_create_account);
 
         userPhoneNumber = (TextView) findViewById(R.id.userPhoneNumber);
         newPassword = (EditText) findViewById(R.id.newPassword);
         confirmNewPassword = (EditText) findViewById(R.id.confirmNewPassword);
-        createPasswordButton = (Button) findViewById(R.id.createPasswordButton);
+        createAccountButton = (Button) findViewById(R.id.createPasswordButton);
         phoneNumber = getIntent().getStringExtra("phoneNumber");
         userPhoneNumber.setText(phoneNumber);
-        createPasswordButton.setOnClickListener(this);
+        createAccountButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if(view == createPasswordButton){
+        if(view == createAccountButton){
             Log.d("button", "you have pressed me");
             MtibaRequests mtibaRequests = new MtibaRequests();
             String username = userPhoneNumber.getText().toString().trim();
             String password = newPassword.getText().toString().trim();
             String passwordConfirmation = confirmNewPassword.getText().toString().trim();
+
+//            String firstName =;
+//            String secondName =;
+//            String lastName=;
+//            String idNumber =;
+//            Long dateOfBirth=;
+
+
+
+
+
+
             boolean isvalidPassword = isPasswordValid(password, passwordConfirmation);
             if(!isvalidPassword){
                 newPassword.setError("Password should be 6 characters or more");

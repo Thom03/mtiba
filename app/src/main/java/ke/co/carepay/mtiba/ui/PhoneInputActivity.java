@@ -3,7 +3,6 @@ package ke.co.carepay.mtiba.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,7 +50,7 @@ public class PhoneInputActivity extends AppCompatActivity implements View.OnClic
                             JSONObject userObject = new JSONObject(jsonData);
                             boolean hasPassword = userObject.getBoolean("hasPassword");
                             if (!hasPassword){
-                                Intent intent = new Intent(getApplicationContext(), CreatePasswordActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), CreateAccountActivity.class);
                                 String phoneNumber = phoneNumberInput.getText().toString().trim();
                                 intent.putExtra("phoneNumber",phoneNumber);
                                 startActivity(intent);
@@ -61,7 +60,6 @@ public class PhoneInputActivity extends AppCompatActivity implements View.OnClic
                                 String phoneNumber = phoneNumberInput.getText().toString().trim();
                                 intent.putExtra("phoneNumber",phoneNumber);
                                 startActivity(intent);
-                                finish();
                             }
                         }
                     }catch (IOException e) {
