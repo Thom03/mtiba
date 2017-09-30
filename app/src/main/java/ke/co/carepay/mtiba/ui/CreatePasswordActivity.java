@@ -1,13 +1,19 @@
 package ke.co.carepay.mtiba.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -17,58 +23,40 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener{
+public class CreatePasswordActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private TextView userPhoneNumber;
     private EditText newPassword;
     private EditText confirmNewPassword;
     private Button createAccountButton;
     private String phoneNumber;
-    private EditText firstName;
-    private EditText middleName;
-    private EditText lastName;
-    private EditText dateOfBirth;
-    private Spinner sex;
-    private EditText nationalIdNumber;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account);
+        setContentView(R.layout.activity_create_password);
 
         userPhoneNumber = (TextView) findViewById(R.id.userPhoneNumber);
         newPassword = (EditText) findViewById(R.id.newPassword);
         confirmNewPassword = (EditText) findViewById(R.id.confirmNewPassword);
-        createAccountButton = (Button) findViewById(R.id.createPasswordButton);
-        firstName = (EditText) findViewById(R.id.newPassword);
-        middleName = (EditText) findViewById(R.id.newPassword);
-        lastName = (EditText) findViewById(R.id.newPassword);
-        dateOfBirth = (EditText) findViewById(R.id.newPassword);
-        sex = (Spinner) findViewById(R.id.sex);
-        nationalIdNumber = (EditText) findViewById(R.id.nationalIdNumber);
+
 
 
         phoneNumber = getIntent().getStringExtra("phoneNumber");
         userPhoneNumber.setText(phoneNumber);
         createAccountButton.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View view) {
         if(view == createAccountButton){
             Log.d("button", "you have pressed me");
-            MtibaRequests mtibaRequests = new MtibaRequests();
+            final MtibaRequests mtibaRequests = new MtibaRequests();
             String username = userPhoneNumber.getText().toString().trim();
             String password = newPassword.getText().toString().trim();
             String passwordConfirmation = confirmNewPassword.getText().toString().trim();
-
-            String firstName =;
-            String secondName =;
-            String lastName=;
-            String idNumber =;
-            Long dateOfBirth=;
-
-
-
 
 
 
@@ -86,7 +74,24 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Log.d("createpassword", Integer.toString(response.code()));
+                        mtibaRequests.checkUserExists(phoneNumber, new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+
+                            }
+
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+
+                                if (response.isSuccessful()) {
+                                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                    intent.putExtra("phoneNumber", phoneNumber);
+                                    startActivity(intent);
+                                    finish();
+
+                                }
+                            }
+                        });
                     }
                 });
             }
@@ -97,5 +102,15 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
