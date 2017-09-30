@@ -50,7 +50,7 @@ public class PhoneInputActivity extends AppCompatActivity implements View.OnClic
                             JSONObject userObject = new JSONObject(jsonData);
                             boolean hasPassword = userObject.getBoolean("hasPassword");
                             if (!hasPassword){
-                                Intent intent = new Intent(getApplicationContext(), CreateAccountActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), CreatePasswordActivity.class);
                                 String phoneNumber = phoneNumberInput.getText().toString().trim();
                                 intent.putExtra("phoneNumber",phoneNumber);
                                 startActivity(intent);
