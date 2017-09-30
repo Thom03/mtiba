@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -22,9 +23,13 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     private EditText confirmNewPassword;
     private Button createAccountButton;
     private String phoneNumber;
-//    private EditText;
-//    private EditText;
-//    private EditText;
+    private EditText firstName;
+    private EditText middleName;
+    private EditText lastName;
+    private EditText dateOfBirth;
+    private Spinner sex;
+    private EditText nationalIdNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +39,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         newPassword = (EditText) findViewById(R.id.newPassword);
         confirmNewPassword = (EditText) findViewById(R.id.confirmNewPassword);
         createAccountButton = (Button) findViewById(R.id.createPasswordButton);
+        firstName = (EditText) findViewById(R.id.newPassword);
+        middleName = (EditText) findViewById(R.id.newPassword);
+        lastName = (EditText) findViewById(R.id.newPassword);
+        dateOfBirth = (EditText) findViewById(R.id.newPassword);
+        sex = (Spinner) findViewById(R.id.sex);
+        nationalIdNumber = (EditText) findViewById(R.id.nationalIdNumber);
+
+
         phoneNumber = getIntent().getStringExtra("phoneNumber");
         userPhoneNumber.setText(phoneNumber);
         createAccountButton.setOnClickListener(this);
@@ -48,11 +61,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             String password = newPassword.getText().toString().trim();
             String passwordConfirmation = confirmNewPassword.getText().toString().trim();
 
-//            String firstName =;
-//            String secondName =;
-//            String lastName=;
-//            String idNumber =;
-//            Long dateOfBirth=;
+            String firstName =;
+            String secondName =;
+            String lastName=;
+            String idNumber =;
+            Long dateOfBirth=;
 
 
 
