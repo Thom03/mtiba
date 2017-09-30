@@ -12,10 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
 
 public class Mtiba extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    FloatingActionButton fabplus,fabclinic,fabtopup,fabdependants;
+    Animation fabopen,fabclose,fabrotate,fabantirotate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
