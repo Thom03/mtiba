@@ -11,14 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoStatusBar">
-        <activity android:name=".ui.SplashActivity">
+        <activity android:name=".ui.PhoneInputActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.PhoneInputActivity" />
+        <activity android:name=".ui.SplashActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.CreatePasswordActivity" />
         <activity
