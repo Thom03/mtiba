@@ -88,7 +88,6 @@ public class CreatePasswordActivity extends AppCompatActivity implements View.On
                                     intent.putExtra("phoneNumber", phoneNumber);
                                     startActivity(intent);
                                     finish();
-
                                 }
                             }
                         });
