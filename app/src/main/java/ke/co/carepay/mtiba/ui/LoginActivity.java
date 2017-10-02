@@ -75,13 +75,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 JSONObject jsonObject = new JSONObject(jsonData);
                                 String token = jsonObject.getString("token");
                                 mEditor.putString(Constants.USER_TOKEN, token);
-                                mEditor.commit();
-
 
                                 String phoneNumber = jsonObject.getString("name");
                                 String id = jsonObject.getString("id");
+
+                                mEditor.putInt("id" ,Integer.parseInt(id));
+                                mEditor.commit();
                                 if(response.code()==200){
                                     Intent intent = new Intent(LoginActivity.this, Mtiba.class);
+                                    intent.putExtra("id", id);
                                     startActivity(intent);
                                     finish();
                                 }else{

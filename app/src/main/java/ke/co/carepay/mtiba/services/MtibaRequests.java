@@ -1,5 +1,6 @@
 package ke.co.carepay.mtiba.services;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
@@ -113,6 +114,16 @@ public class MtibaRequests {
                 .header("Accept","*/*")
                 .url(url)
                 .method("POST", body)
+                .build();
+        Call call = client.newCall(request);
+        call.enqueue(callback);
+    }
+    public void getUserDetails(String user_token, Context context, int userRef, Callback callback){
+        String baseUrl = "http://program-service-test.ap-southeast-1.elasticbeanstalk.com/accountholders/user/"+userRef+"/accounts";
+           OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .header("Authorization", "Bearer "+user_token)
+                .url(baseUrl)
                 .build();
         Call call = client.newCall(request);
         call.enqueue(callback);

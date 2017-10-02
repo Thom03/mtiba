@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,15 +16,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import ke.co.carepay.mtiba.R;
+import ke.co.carepay.mtiba.services.MtibaRequests;
 import ke.co.carepay.mtiba.utils.Constants;
 import ke.co.carepay.mtiba.utils.NavigationItemSelector;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class Mtiba extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
+    private TextView nameOfUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +80,46 @@ public class Mtiba extends AppCompatActivity implements NavigationView.OnNavigat
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        MtibaRequests mtibaRequests = new MtibaRequests();
+
+        int userRef = mSharedPreferences.getInt("id",0);
+        nameOfUser = (TextView) findViewById(R.id.nameOfUser);
+        mtibaRequests.getUserDetails(user_token, getApplicationContext(), userRef, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                ArrayList<JSONObject> objects;
+                try {
+                    String jsonData = response.body().string();
+                    if (response.isSuccessful()) {
+
+
+                        Gson gson = new Gson();
+                        List stuff = gson.fromJson(jsonData, List.class);
+                        JSONObject stuffneeded = (JSONObject) stuff.get(0);
+                        JSONArray beneficiaries = stuffneeded.getJSONArray("beneficiaries");
+
+                        JSONObject bene1 = beneficiaries.getJSONObject(0);
+                        String fname = bene1.getString("firstName");
+                        JSONObject jsonObject = new JSONObject(jsonData);
+                        JSONArray jsonArray = jsonObject.getJSONArray(jsonData);
+                        JSONObject jsonObject1 = jsonArray.getJSONObject(0);
+//                        JSONArray jsonArray1 = jsonObject1.getJSONArray("beneficiaries");
+//                        String fName = jsonArray1.getJSONObject(0).getString("firstName");
+//                        String sName = jsonArray1.getJSONObject(0).getString("middleName");
+//                        nameOfUser.setText(fName + " " + sName);
+//                        Log.d("User Details", jsonArray.toString());
+                    }
+                }catch(JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override
